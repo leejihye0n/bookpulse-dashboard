@@ -53,6 +53,25 @@ function ChartCard({ title, children }: { title: string; children: React.ReactNo
     );
 }
 
+function topNWithOther(data: { name: string; value: number }[], topN: number) {
+    const sorted = [...data].sort((a, b) => b.value - a.value);
+
+    const top = sorted.slice(0, topN);
+    const rest = sorted.slice(topN);
+
+    const restSum = rest.reduce((s, x) => s + x.value, 0);
+
+    const idx = top.findIndex((x) => x.name === "기타");
+    if (idx >= 0) {
+        top[idx] = { ...top[idx], value: top[idx].value + restSum };
+        return top;
+    }
+
+    if (restSum > 0) return [...top, { name: "기타", value: restSum }];
+    return top;
+}
+
+
 const PIE_COLORS = ["#516453", "#8BA89C", "#69887A", "#2A3A5C", "#465950"];
 const OTHER_COLOR = "#9CA3AF";
 
@@ -62,33 +81,26 @@ function ChartsSection({ books }: { books: Book[] }) {
     const genreTop5WithOther = useMemo(() => {
         const map = new Map<string, number>();
         for (const b of books) {
-        const label = kdcMainLabel(b.kdc);
-        map.set(label, (map.get(label) ?? 0) + 1);
-    }
+            const label = kdcMainLabel(b.kdc);
+            map.set(label, (map.get(label) ?? 0) + 1);
+        }
 
-        const sorted = [...map.entries()]
-        .sort((a, b) => b[1] - a[1])
-        .map(([name, value]) => ({ name, value }));
-
-        const top5 = sorted.slice(0, 5);
-        const rest = sorted.slice(5);
-
-        const otherValue = rest.reduce((sum, it) => sum + it.value, 0);
-
-        return otherValue > 0 ? [...top5, { name: "기타", value: otherValue }] : top5;
+        const data = [...map.entries()].map(([name, value]) => ({ name, value }));
+        return topNWithOther(data, 5);
     }, [books]);
 
-  const authorTop5 = useMemo(() => {
-    const map = new Map<string, number>();
 
-    for (const b of books) {
-        const name = normalizeAuthor(b.author);
-        map.set(name, (map.get(name) ?? 0) + (Number(b.loanCount) || 0));
-    }
-    return [...map.entries()]
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 5)
-        .map(([name, value]) => ({ name, value }));
+    const authorTop5 = useMemo(() => {
+        const map = new Map<string, number>();
+
+        for (const b of books) {
+            const name = normalizeAuthor(b.author);
+            map.set(name, (map.get(name) ?? 0) + (Number(b.loanCount) || 0));
+        }
+        return [...map.entries()]
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 5)
+            .map(([name, value]) => ({ name, value }));
     }, [books]);
 
     const renderSmallPercent = (props: PieLabelRenderProps) => {
@@ -125,7 +137,7 @@ function ChartsSection({ books }: { books: Book[] }) {
                         data={genreTop5WithOther}
                         dataKey="value"
                         nameKey="name"
-                        outerRadius={95}
+                        outerRadius={80}
                         labelLine={false}
                         label={renderSmallPercent}
                         stroke="#ffffff"
@@ -133,7 +145,7 @@ function ChartsSection({ books }: { books: Book[] }) {
                     >
                     {genreTop5WithOther.map((d, i) => (
                     <Cell
-                        key={d.name}
+                        key={`${d.name}-${i}`}
                         fill={d.name === "기타" ? OTHER_COLOR : PIE_COLORS[i % PIE_COLORS.length]}
                     />
                     ))}
