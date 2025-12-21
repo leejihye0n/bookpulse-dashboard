@@ -21,8 +21,8 @@ export default function AboutPurposeSection() {
                     </p>
 
                     <p>
-                        이 웹사이트는 도서관 정보나루 API를 활용해<br />
-                        실시간 인기 도서 Top 100과 장르별, 작가별 트렌드를 시각화합니다.
+                        이 웹사이트는 도서관 정보나루 데이터와 알라딘 API를 활용해<br />
+                        인기 도서 Top 500과 장르별, 작가별 트렌드를 시각화합니다.
                     </p>
 
                     <p>
