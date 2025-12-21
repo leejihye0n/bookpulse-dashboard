@@ -37,11 +37,16 @@ export default function DetailHero({
 		<div className="rounded-2xl border border-[#e0d9c8] bg-white p-6">
 			<div className="flex gap-10 flex-col md:flex-row">
 				{/* 표지 */}
-				<div className="md:w-[320px]">
+				<div className="md:w-[320px] flex justify-center md:justify-start">
 					<img
 						src={detail.cover || PLACEHOLDER}
 						alt={detail.title}
-						className="w-full max-w-[320px] h-[450px] object-cover rounded-2xl border border-[#e0d9c8]"
+						className="
+							w-full max-w-[320px] h-[450px]
+							object-cover
+							rounded-2xl
+							border border-[#e0d9c8]
+						"
 					/>
 				</div>
 

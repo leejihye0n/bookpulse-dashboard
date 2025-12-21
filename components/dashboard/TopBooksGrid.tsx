@@ -24,8 +24,9 @@ export default function TopBooksGrid({ books }: { books: Book[] }) {
                 return (
                     <li key={b.isbn} className="text-center">
                         <Link href={`/detail/${b.isbn}`} className="block">
-                            <div className="relative mx-auto w-[150px] h-[230px]">
-                                <span className="absolute -left-3 -top-3 z-10 h-10 w-10
+                            <div className="relative mx-auto w-full max-w-[160px]">
+                                <span className="
+                                    absolute -left-2 -top-2 z-10 h-10 w-10
                                     rounded-full bg-[#f6f2e8] shadow
                                     flex items-center justify-center
                                     text-sm font-semibold text-gray-900
@@ -34,11 +35,17 @@ export default function TopBooksGrid({ books }: { books: Book[] }) {
                                     {idx + 1}
                                 </span>
                             
-                                <div className="relative mx-auto w-[150px] h-[230px] rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:shadow-black/15">
+                                <div className="
+                                    aspect-[2/3] w-full
+                                    rounded-2xl bg-white
+                                    border border-[#e0d9c8]
+                                    overflow-hidden shadow-md
+                                    hover:shadow-xl hover:shadow-black/15"
+                                >
                                     <img
                                         src={b.cover || PLACEHOLDER}
                                         alt={b.title}
-                                        className="w-full h-full object-cover"
+                                        className="w-full h-full object-contain bg-[#faf7f0]"
                                     />
                                 </div>
                             </div>
