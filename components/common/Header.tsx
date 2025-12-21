@@ -9,10 +9,16 @@ export default function Header() {
     const normalize = (p: string) => (p !== "/" ? p.replace(/\/+$/, "") : "/");
 
     const isActive = (href: string) => {
-    const cur = normalize(pathname);
-    const target = normalize(href);
+        const cur = normalize(pathname);
+        const target = normalize(href);
 
-    if (target === "/") return cur === "/";
+        if (target === "/")
+            return cur === "/";
+
+        if (target === "/dashboard" && cur.startsWith("/detail")) {
+            return true;
+        }
+
         return cur === target || cur.startsWith(`${target}/`);
     };
 
