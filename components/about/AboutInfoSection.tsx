@@ -9,8 +9,8 @@ export default function AboutInfoSection() {
                     <Database className="mx-auto mb-4 h-12 w-12 text-[#8fa99a]" />
                     <h3 className="text-black text-2xl font-semibold mb-2">Data Source</h3>
                     <p className="text-gray-600">
-                        본 서비스는 문화체육관광부에서 제공하는<br />
-                        <strong>도서관 정보나루 Open API</strong>를 활용하여<br />
+                        본 서비스는 도서관 정보나루에서 제공하는<br />
+                        인기 대출 도서 csv 파일과 알라딘 API를 활용하여<br />
                         실제 도서관 대출 데이터를 기반으로 분석하였습니다.
                     </p>
                 </div>
@@ -22,7 +22,7 @@ export default function AboutInfoSection() {
                     <p className="text-gray-600">
                         Next.js, TypeScript,<br />
                         Tailwind CSS를 사용하여<br />
-                        정적 웹 기반의 대시보드로 구현하였습니다.
+                        정적 웹 기반의 대시보드를 구현하였습니다.
                     </p>
                 </div>
             </div>

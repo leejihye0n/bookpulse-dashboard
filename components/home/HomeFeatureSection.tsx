@@ -17,7 +17,7 @@ export default function HomeFeatureSection() {
                     <BarChart3 className="mx-auto mb-4 h-12 w-12 text-[#8fa99a]" />
                     <h3 className="text-black text-2xl font-semibold mb-2">주목받는 작가</h3>
                     <p className="text-gray-600">
-                        Top 100에서 가장 많은 책을 보유한<br />
+                        Top 500에서 가장 많은 책을 보유한<br />
                         작가들을 확인하세요.
                     </p>
                 </div>
@@ -27,7 +27,7 @@ export default function HomeFeatureSection() {
                     <h3 className="text-black text-2xl font-semibold mb-2">실시간 베스트셀러</h3>
                     <p className="text-gray-600">
                         도서관 정보나루 기반<br />
-                        Top 100 인기 도서 목록을 확인하세요.
+                        Top 500 인기 도서 목록을 확인하세요.
                     </p>
                 </div>
             </div>

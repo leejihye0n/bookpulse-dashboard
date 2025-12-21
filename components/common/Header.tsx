@@ -6,10 +6,19 @@ import { BookOpen } from "lucide-react";
 
 export default function Header() {
     const pathname = usePathname();
+    const normalize = (p: string) => (p !== "/" ? p.replace(/\/+$/, "") : "/");
+
+    const isActive = (href: string) => {
+    const cur = normalize(pathname);
+    const target = normalize(href);
+
+    if (target === "/") return cur === "/";
+        return cur === target || cur.startsWith(`${target}/`);
+    };
 
     const navLinkClass = (href: string) =>
         `transition-colors ${
-            pathname === href
+            isActive(href)
                 ? "text-[#1e3a5f]"
                 : "text-[#6b5a45] hover:text-[#1e3a5f]"
         }`;
@@ -43,7 +52,6 @@ export default function Header() {
                             </div>
                         </Link>
                     </nav>
-
                 </div>
             </div>
         </header>
