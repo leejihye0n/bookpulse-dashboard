@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function HomeHeroSection() {
     return (
         <section className="bg-[#e9e4d4] py-24">
@@ -10,12 +12,12 @@ export default function HomeHeroSection() {
                     인기 도서 Top 500과 2030 트렌드 분석으로 당신의 책을 찾아보세요.
                 </p>
 
-                <a
-                href="/dashboard"
-                className="inline-block rounded-xl bg-[#8fa99a] px-8 py-4 text-white font-semibold text-sm md:text-base hover:bg-[#7d9687] transition"
+                <Link
+                    href="/dashboard"
+                    className="inline-block rounded-xl bg-[#8fa99a] px-8 py-4 text-white font-semibold text-sm md:text-base hover:bg-[#7d9687] transition"
                 >
                     보러 가기
-                </a>
+                </Link>
             </div>
         </section>
     );
