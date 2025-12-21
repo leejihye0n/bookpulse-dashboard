@@ -1,7 +1,13 @@
 import fs from "fs/promises";
 import path from "path";
+import type { Metadata } from "next";
 import type { Book } from "@/types/book";
 import DashboardClient from "@/components/dashboard/DashboardClient";
+
+export const metadata: Metadata = {
+  	title: "Dashboard | BookPulse",
+  	description: "Dashboard page",
+};
 
 export default async function DashboardPage() {
 	const p = path.join(process.cwd(), "public", "data", "books.json");

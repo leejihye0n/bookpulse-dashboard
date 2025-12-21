@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { readBooks } from "@/lib/data/books";
 import { readDetail } from "@/lib/data/details";
 
@@ -5,6 +6,11 @@ import DetailBackLink from "@/components/detail/DetailBackLink";
 import DetailHero from "@/components/detail/DetailHero";
 import DetailDescription from "@/components/detail/DetailDescription";
 import DetailEmptyState from "@/components/detail/DetailEmptyState";
+
+export const metadata: Metadata = {
+  	title: "Detail | BookPulse",
+  	description: "Detail page",
+};
 
 export async function generateStaticParams() {
 	const books = await readBooks();
