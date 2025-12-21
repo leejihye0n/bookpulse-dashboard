@@ -130,7 +130,7 @@ function ChartsSection({ books }: { books: Book[] }) {
 
     return (
         <section className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <ChartCard title="장르 순위">
+            <ChartCard title="카테고리 순위">
                 <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                     <Pie
