@@ -5,7 +5,7 @@
 
 ## 배포 링크
 
-🔗 [https://leejihyeon83.github.io/bookpulse-dashboard/](https://leejihyeon83.github.io/bookpulse-dashboard/)
+🔗 [https://leejihye0n.github.io/bookpulse-dashboard/](https://leejihye0n.github.io/bookpulse-dashboard/)
 
 ## 기획 배경 및 목표
 
